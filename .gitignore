@@ -1,0 +1,8 @@
+obj/
+*.suo
+*.user
+*.swp
+*.dll
+*.pdb
+*.gpState
+.DS_Store
