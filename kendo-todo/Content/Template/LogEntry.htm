@@ -1,0 +1,18 @@
+﻿<script id="logEntryTemplate" type="text/x-kendo-template">
+    <li>
+        <div class="tabstrip">
+            <ul>
+                <li class="k-state-active">Request</li>
+                <li>Response</li>
+            </ul>
+            <div>
+                <div><b>Method</b>: ${ requestMethod }</div>
+                <div><b>URL:</b> ${ requestUrl }</div>
+                <div><b>Data:</b> ${ requestData }</div>
+            </div>
+            <div>
+                <div id="${ requestId }"></div>
+            </div>
+        </div>
+    </li>
+</script>

@@ -1,0 +1,11 @@
+﻿@{
+    Layout = null;
+}
+
+<script id="template" type="text/x-kendo-template">
+    <li id="item#= ID #" data-id="#= ID #" class="details-title item">
+        <a class='delete k-button' data-event="delete"><span class='k-icon k-delete'>Delete</span></a>
+        <a class='edit k-button' data-event="edit"><span class="k-icon k-edit">Edit</span></a>
+        <div class="name"><h3>#= Name #</h3><input type="text" class="title" value="#= Name #" data-event="saveEdit" data-event-cancel="cancelEdit" /><a class='cancel k-button' data-event="cancelEdit"><span class="k-icon k-cancel">Cancel</span></a></div>
+    </li>
+</script>

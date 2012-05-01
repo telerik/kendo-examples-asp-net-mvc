@@ -1,0 +1,32 @@
+﻿
+
+<div id="content">
+    <article>
+        <div id="title">
+            <h2>Todo List</h2>
+            <button id="saveDeletes" class="k-button"data-event="saveAll">Save Deletes</button>
+        </div>
+        <hr />
+        <input type="text" id="new-item" class="title" />
+        <button id="addItem" class="k-button add-button title" data-event="addItem">Add</button>
+        <ul id="items"></ul>
+    </article>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+        // create a function for getting the root path 
+        root = function (url) {
+            var path = '@Request.ApplicationPath'
+            if (path != '/') path = path + '/'
+            return path + url;
+        }
+
+        app.root = root;
+        app.init();
+
+    });
+
+</script>

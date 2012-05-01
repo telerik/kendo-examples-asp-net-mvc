@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Kendo UI Todo List</title>
+    <link href="@Url.Content("~/Content/Kendo/kendo.common.min.css")" rel="Stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Kendo/kendo.kendo.min.css")" rel="Stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Kendo/kendo.examples.min.css")" rel="Stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/screen.css")" rel="Stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico">
+    <script src="@Url.Content("~/Scripts/Libraries/modernizr.js")"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script src="@Url.Content("~/Scripts/Libraries/kendo.all.min.js")"></script>
+</head>
+<body>
+    <div id="content">
+        <ul id="panelbar">
+            <li>Network Activity
+                <div class="log">
+                    <ul id="log">
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    <header>
+            <button id="single-update-mode" class='k-button' data-event="singleUpdateMode">Single Update Mode</button>
+            <button id="batch-update-mode" class='k-button' data-event="batchUpdateMode">Batch Update Mode</button>
+            <img src="@Url.Content("~/Content/Images/kendo-dude.png")" />
+        </header>
+    @RenderBody()
+    <footer></footer>
+    </div>
+</body>
+</html>
