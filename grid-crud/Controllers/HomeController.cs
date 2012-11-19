@@ -66,11 +66,12 @@ namespace Kendo.Mvc.Grid.CRUD.Controllers
         /// </summary>
         /// <returns>All available products as JSON</returns>
         [HttpPost]
-        public ActionResult Read()
+        public ActionResult Read(int take, int skip, IEnumerable<Sort> sort, Kendo.Mvc.Grid.CRUD.Models.Filter filter)
         {
             using (var northwind = new Northwind())
             {
-                var products = northwind.Products
+                var result = northwind.Products
+                    .OrderBy(p => p.ProductID) // EF requires ordered IQueryable in order to do paging
                     // Use a view model to avoid serializing internal Entity Framework properties as JSON
                     .Select(p => new ProductViewModel
                     {
@@ -80,9 +81,9 @@ namespace Kendo.Mvc.Grid.CRUD.Controllers
                         UnitsInStock = p.UnitsInStock,
                         Discontinued = p.Discontinued
                     })
-                    .ToList();
+                    .ToDataSourceResult(take, skip, sort, filter);
 
-                return Json(products);
+                return Json(result);
             }
         }
 

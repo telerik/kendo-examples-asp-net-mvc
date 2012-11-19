@@ -65,12 +65,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataSourceResult.cs" />
+    <Compile Include="Models\Dynamic.cs" />
+    <Compile Include="Models\Filter.cs" />
     <Compile Include="Models\Northwind.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Northwind.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductViewModel.cs" />
+    <Compile Include="Models\QueryableExtensions.cs" />
+    <Compile Include="Models\Sort.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

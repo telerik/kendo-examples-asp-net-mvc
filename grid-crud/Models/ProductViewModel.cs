@@ -1,8 +1,8 @@
 ﻿namespace Kendo.Mvc.Grid.CRUD.Models
 {
-    /// <summary>
-    /// This class is used for JSON serialization and deserialization. It is mapped to and from the Product entity class
-    /// </summary>
+    /// <summay>
+    /// This class is used fo JSON seialization and deseialization. It is mapped to and fom the Poduct entity class
+    /// </summay>
     public class ProductViewModel
     {
         public int? ProductID { get; set; }
