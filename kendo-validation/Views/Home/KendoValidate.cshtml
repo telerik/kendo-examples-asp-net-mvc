@@ -1,0 +1,127 @@
+﻿@{
+    ViewBag.Title = "Kendo Validate";
+}
+
+<div id="tickets">
+    <h3>Book Tickets</h3>
+    <ul id="innerList">
+
+        <li>
+            <label for="search" class="required">ComboBox</label>
+            <input type="search" id="search" name="search" required validationMessage="Please select item"/><span class="k-invalid-msg" data-for="search"></span>
+        </li>
+
+        <li>
+            <label for="search2" class="required">DropDown</label>
+            <input type="search" id="search2" name="search2" required validationMessage="Please select item"/><span class="k-invalid-msg" data-for="search2"></span>
+        </li>
+
+        <li>
+            <label for="tel" class="required">Phone</label>
+            <input type="tel" id="tel" name="tel" class="k-textbox" pattern="\d{10}" placeholder="Please enter a ten digit phone number" required
+                validationMessage="Please enter a ten digit phone number"/>
+            <span class="k-invalid-msg" data-for="tel"></span>
+        </li>
+
+        <li>
+            <label for="number" class="required">Amount</label>
+            <input id="number" name="number" placeholder="Please enter an amount" required validationMessage="Please enter an amount"/>
+            <span class="k-invalid-msg" data-for="number"></span>
+        </li>
+
+        <li  class="accept">
+            <button class="k-button" type="submit">Submit</button>
+        </li>
+        <li class="status">
+        </li>
+    </ul>
+</div>
+
+<script>
+    $(document).ready(function () {
+        /* Initialization */
+        $("#search").kendoComboBox({
+            dataSource: []
+        });
+
+        $("#search2").kendoDropDownList({
+            dataTextField: "text",
+            dataValueField: "value",
+            dataSource: [
+                { text: "--Select--", value: "" },
+                { text: "The Shawshank Redemption", value: "1" },
+                { text: "The Godfather", value: "2" }
+            ]
+        });
+
+        $("#number").kendoNumericTextBox();
+
+        /* Wire validation */
+        var validator = $("#tickets").kendoValidator().data("kendoValidator"),
+            status = $(".status");
+
+        $("button").click(function () {
+            if (validator.validate()) {
+                status.text("Hooray! Your tickets has been booked!").addClass("valid");
+            } else {
+                status.text("Oops! There is invalid data in the form.").addClass("invalid");
+            }
+        });
+
+        /* Bind Mutation Events */
+        var elements = $("#tickets").find("[data-role=combobox],[data-role=dropdownlist],[data-role=numerictextbox]");
+
+        //correct mutation event detection
+        var hasMutationEvents = ("MutationEvent" in window),
+            MutationObserver = window.WebKitMutationObserver || window.MutationObserver;
+
+        if (MutationObserver) {
+            var observer = new MutationObserver(function (mutations) {
+                console.log(mutations);
+
+                var idx = 0,
+                    mutation,
+                    length = mutations.length;
+
+                for (; idx < length; idx++) {
+                    mutation = mutations[idx];
+                    if (mutation.attributeName === "class") {
+                        updateCssOnPropertyChange(mutation);
+                    }
+                }
+            }),
+            config = { attributes: true, childList: false, characterData: false };
+
+            elements.each(function () {
+                observer.observe(this, config);
+            });
+        } else if (hasMutationEvents) {
+            elements.bind("DOMAttrModified", updateCssOnPropertyChange);
+        } else {
+            elements.each(function () {
+                this.attachEvent("onpropertychange", updateCssOnPropertyChange);
+            });
+        }
+    });
+
+    function updateCssOnPropertyChange (e) {
+        var element = $(e.target || e.srcElement);
+
+        element.siblings("span.k-dropdown-wrap")
+               .add(element.parent("span.k-numeric-wrap"))
+               .toggleClass("k-invalid", element.hasClass("k-invalid"));
+    }
+</script>
+
+<style type="text/css">
+    .k-widget > span.k-invalid,
+    input.k-invalid
+    {
+        background: red;
+    }
+    
+    #innerList li
+    {
+        margin: 10px 10px;
+    }
+</style>
