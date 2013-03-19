@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
+	<link href="@Url.Content("~/Content/kendo/2012.3.1315/kendo.common.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2012.3.1315/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2012.3.1315/kendo.default.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2012.3.1315/kendo.dataviz.default.min.css")" rel="stylesheet" type="text/css" />
+	<script src="@Url.Content("~/Scripts/kendo/2012.3.1315/jquery.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/kendo/2012.3.1315/kendo.all.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/kendo/2012.3.1315/kendo.aspnetmvc.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+</head>
+
+<body>
+    <div class="page">
+
+        <div id="header">
+            <div id="logindisplay">
+                @Html.Partial("_LogOnPartial")
+            </div>
+            @(Html.Kendo().Menu()
+			    .Name("menu1")
+				.Items(menu => {
+                    menu.Add().Text("Home").Action("Index", "Home", new { area = "" });
+                    menu.Add().Text("About").Action("About", "Home", new { area = "" });
+                    menu.Add().Text("Area1").Action("Index", "Area1", new { area = "Area1" });
+                    menu.Add().Text("Area2").Action("Index", "Area2", new { area = "Area2" });
+				})
+		    )
+        </div>
+
+        <div id="main">
+            @RenderBody()
+            <div id="footer">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

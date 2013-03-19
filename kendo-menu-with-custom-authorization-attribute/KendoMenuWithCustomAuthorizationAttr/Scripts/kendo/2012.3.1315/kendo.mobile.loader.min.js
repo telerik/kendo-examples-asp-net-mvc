@@ -1,0 +1,9 @@
+/*
+* Kendo UI Complete v2012.3.1315 (http://kendoui.com)
+* Copyright 2013 Telerik AD. All rights reserved.
+*
+* Kendo UI Complete commercial licenses may be obtained at
+* https://www.kendoui.com/purchase/license-agreement/kendo-ui-complete-commercial.aspx
+* If you do not own a commercial license, this file shall be governed by the trial license terms.
+*/
+(function(n){var i=window.kendo,t=i.mobile.ui,o=t.Widget,a=["touchstart","touchend","touchmove","mousedown","mousemove","mouseup"],e=o.extend({init:function(i,t){var a=this,e=n('<div class="km-loader"><span class="km-loading km-spin"></span></div>');o.fn.init.call(a,e,t),a.container=i,a._attachCapture(),e.append(a.options.loading).hide().appendTo(i)},options:{name:"Loader",loading:"<h1>Loading...</h1>",timeout:100},show:function(){var n=this;clearTimeout(n._loading),n.options.loading!==!1&&(n._loading=setTimeout(function(){n.element.show()},n.options.timeout))},hide:function(){var n=this;clearTimeout(n._loading),n.element.hide()},transition:function(){this.transitioning=!0},transitionDone:function(){this.transitioning=!1},_attachCapture:function(){function n(n){i.transitioning&&n.stopPropagation()}var i=this;i.transitioning=!1;for(var t=0;a.length>t;t++)i.container[0].addEventListener(a[t],n,!0)}});t.plugin(e)})(window.kendo.jQuery);
