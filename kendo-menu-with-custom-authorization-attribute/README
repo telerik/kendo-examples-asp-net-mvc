@@ -1,0 +1,10 @@
+### PROJECT DESCRIPTION
+The code library shows how to use Menu widget to navigate to different views. Menu show/hides menu items depending on the user authentication.
+
+In the project three custom authorize attributes are used:
+
+1. **AllowAnonymousAttribute** - allows the decorated Action method to all users
+2. **GroupAuthorizeAttribute** - verifies whether the logged in user is allowed to see this view. This attribute extends default behavior of AuthorizeAttribute and allows to define multiple roles
+3. **CustomUnauthorizedActionResult** - this attribute should be used when you want to hide menu item and still navigate to a normal view, which gives some information to the unauthorized users.
+
+The project also shows how to use Menu widget to navigate to different areas.
