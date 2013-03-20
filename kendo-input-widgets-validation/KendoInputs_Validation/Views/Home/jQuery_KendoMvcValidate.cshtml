@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "Kendo Validate";
+}
+
+@model KendoInputs_Validation.Models.ViewModel
+
+@using(Html.BeginForm()) 
+{
+    <div id="tickets">
+        <h3>Book Tickets</h3>
+        <ul id="innerList">
+            <li>
+                @Html.LabelFor(m => m.ComboBox)
+                @Html.Kendo().ComboBoxFor(m => m.ComboBox)
+                @Html.ValidationMessageFor(m => m.ComboBox)
+            </li>
+
+            <li>
+                @Html.LabelFor(m => m.DropDownList)
+                @(Html.Kendo().DropDownListFor(m => m.DropDownList)
+                      .OptionLabel("Select item...")
+                      .BindTo(new SelectList(new string[] { "Item1", "Item2", "Item3" }))
+                )
+
+                @Html.ValidationMessageFor(m => m.DropDownList)
+            </li>
+
+            <li>
+                @Html.LabelFor(m => m.DatePicker)
+                @Html.Kendo().DatePickerFor(m => m.DatePicker)
+                @Html.ValidationMessageFor(m => m.DatePicker)
+            </li>
+
+            <li>
+                @Html.LabelFor(m => m.Number)
+                @Html.Kendo().NumericTextBoxFor(m => m.Number)
+                @Html.ValidationMessageFor(m => m.Number)
+            </li>
+
+            <li  class="accept">
+                <button class="k-button" type="submit">Submit</button>
+            </li>
+        </ul>
+    </div>
+}
+
+<script>
+    $(document).ready(function () {
+        /* Bind Mutation Events */
+        var elements = $("#tickets").find("[data-role=combobox],[data-role=dropdownlist],[data-role=numerictextbox],[data-role^=date]");
+
+        //correct mutation event detection
+        var hasMutationEvents = ("MutationEvent" in window),
+            MutationObserver = window.WebKitMutationObserver || window.MutationObserver;
+
+        if (MutationObserver) {
+            var observer = new MutationObserver(function (mutations) {
+                var idx = 0,
+                    mutation,
+                    length = mutations.length;
+
+                for (; idx < length; idx++) {
+                    mutation = mutations[idx];
+                    if (mutation.attributeName === "class") {
+                        updateCssOnPropertyChange(mutation);
+                    }
+                }
+            }),
+            config = { attributes: true, childList: false, characterData: false };
+
+            elements.each(function () {
+                observer.observe(this, config);
+            });
+        } else if (hasMutationEvents) {
+            elements.bind("DOMAttrModified", updateCssOnPropertyChange);
+        } else {
+            elements.each(function () {
+                this.attachEvent("onpropertychange", updateCssOnPropertyChange);
+            });
+        }
+    });
+
+    function updateCssOnPropertyChange (e) {
+        var element = $(e.target);
+
+        element.siblings("span.k-dropdown-wrap")
+               .add(element.parent("span.k-numeric-wrap"))
+               .add(element.parent("span.k-picker-wrap"))
+               .toggleClass("k-invalid", element.hasClass("input-validation-error"));
+    }
+</script>
+
+<style type="text/css">
+    .k-widget > span.k-invalid,
+    input.k-invalid
+    {
+        background: red;
+    }
+    
+    #innerList li
+    {
+        margin: 10px 10px;
+    }
+</style>
