@@ -1,0 +1,21 @@
+﻿body {
+    font-family: sans-serif;
+    -moz-transition: background-color 0.5s;
+    -webkit-transition: background-color 0.5s;
+    -o-transition: background-color 0.5s;
+    transition: background-color 0.5s;
+}
+
+.container {
+    margin: auto;
+    width: 80%;
+    max-width: 960px;
+}
+
+.left {
+    float: left;
+}
+
+#sliders {
+    margin-left: 20px;
+}

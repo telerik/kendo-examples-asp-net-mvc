@@ -1,0 +1,75 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'r.js' ]
+2 info using npm@1.2.17
+3 info using node@v0.10.3
+4 verbose node symlink C:\Program Files\nodejs\\node.exe
+5 verbose read json C:\Users\Thomas\AppData\Roaming\npm\package.json
+6 verbose read json C:\Users\Thomas\AppData\Roaming\npm\package.json
+7 verbose cache add [ 'r.js', null ]
+8 verbose cache add name=undefined spec="r.js" args=["r.js",null]
+9 verbose parsed url { protocol: null,
+9 verbose parsed url   slashes: null,
+9 verbose parsed url   auth: null,
+9 verbose parsed url   host: null,
+9 verbose parsed url   port: null,
+9 verbose parsed url   hostname: null,
+9 verbose parsed url   hash: null,
+9 verbose parsed url   search: null,
+9 verbose parsed url   query: null,
+9 verbose parsed url   pathname: 'r.js',
+9 verbose parsed url   path: 'r.js',
+9 verbose parsed url   href: 'r.js' }
+10 silly lockFile 24fd0fd0-r-js r.js
+11 verbose lock r.js C:\Users\Thomas\AppData\Roaming\npm-cache\24fd0fd0-r-js.lock
+12 verbose chmod C:\Users\Thomas\AppData\Local\Temp\npm-4328\1367944534151-0.9816779184620827\tmp.tgz 644
+13 verbose tar unpack C:\Users\Thomas\AppData\Local\Temp\npm-4328\1367944534151-0.9816779184620827\tmp.tgz
+14 silly lockFile 7469cc60-34151-0-9816779184620827-package C:\Users\Thomas\AppData\Local\Temp\npm-4328\1367944534151-0.9816779184620827\package
+15 verbose lock C:\Users\Thomas\AppData\Local\Temp\npm-4328\1367944534151-0.9816779184620827\package C:\Users\Thomas\AppData\Roaming\npm-cache\7469cc60-34151-0-9816779184620827-package.lock
+16 silly lockFile 9d270af7-34151-0-9816779184620827-tmp-tgz C:\Users\Thomas\AppData\Local\Temp\npm-4328\1367944534151-0.9816779184620827\tmp.tgz
+17 verbose lock C:\Users\Thomas\AppData\Local\Temp\npm-4328\1367944534151-0.9816779184620827\tmp.tgz C:\Users\Thomas\AppData\Roaming\npm-cache\9d270af7-34151-0-9816779184620827-tmp-tgz.lock
+18 silly gunzTarPerm modes [ '755', '644' ]
+19 verbose read json C:\Users\Thomas\AppData\Local\Temp\npm-4328\1367944534151-0.9816779184620827\package\package.json
+20 error not a package C:\Users\Thomas\AppData\Local\Temp\npm-4328\1367944534151-0.9816779184620827\tmp.tgz
+21 silly lockFile 7469cc60-34151-0-9816779184620827-package C:\Users\Thomas\AppData\Local\Temp\npm-4328\1367944534151-0.9816779184620827\package
+22 silly lockFile 7469cc60-34151-0-9816779184620827-package C:\Users\Thomas\AppData\Local\Temp\npm-4328\1367944534151-0.9816779184620827\package
+23 silly lockFile 9d270af7-34151-0-9816779184620827-tmp-tgz C:\Users\Thomas\AppData\Local\Temp\npm-4328\1367944534151-0.9816779184620827\tmp.tgz
+24 silly lockFile 9d270af7-34151-0-9816779184620827-tmp-tgz C:\Users\Thomas\AppData\Local\Temp\npm-4328\1367944534151-0.9816779184620827\tmp.tgz
+25 silly lockFile 24fd0fd0-r-js r.js
+26 silly lockFile 24fd0fd0-r-js r.js
+27 verbose addNamed [ 'r.js', '' ]
+28 verbose addNamed [ null, '' ]
+29 silly lockFile c499db0f-r-js r.js@
+30 verbose lock r.js@ C:\Users\Thomas\AppData\Roaming\npm-cache\c499db0f-r-js.lock
+31 silly addNameRange { name: 'r.js', range: '', hasData: false }
+32 verbose url raw r.js
+33 verbose url resolving [ 'https://registry.npmjs.org/', './r.js' ]
+34 verbose url resolved https://registry.npmjs.org/r.js
+35 info trying registry request attempt 1 at 11:35:34
+36 http GET https://registry.npmjs.org/r.js
+37 http 404 https://registry.npmjs.org/r.js
+38 silly registry.get cb [ 404,
+38 silly registry.get   { server: 'CouchDB/1.3.0 (Erlang OTP/R15B03)',
+38 silly registry.get     date: 'Tue, 07 May 2013 16:35:21 GMT',
+38 silly registry.get     'content-type': 'application/json',
+38 silly registry.get     'content-length': '52',
+38 silly registry.get     'cache-control': 'must-revalidate' } ]
+39 silly lockFile c499db0f-r-js r.js@
+40 silly lockFile c499db0f-r-js r.js@
+41 error 404 'r.js' is not in the npm registry.
+41 error 404 You should bug the author to publish it
+41 error 404
+41 error 404 Maybe try 'npm search r'
+41 error 404
+41 error 404 Note that you can also install from a
+41 error 404 tarball, folder, or http url, or git url.
+42 error System Windows_NT 6.2.9200
+43 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "-g" "r.js"
+44 error cwd C:\Users\Thomas\Documents\GitHub\kendo-examples-asp-net-mvc\requirejs-fundamentals\requirejs-fundamentals\Scripts
+45 error node -v v0.10.3
+46 error npm -v 1.2.17
+47 error code E404
+48 verbose exit [ 1, true ]
