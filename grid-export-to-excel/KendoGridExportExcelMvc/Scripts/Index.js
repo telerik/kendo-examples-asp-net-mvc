@@ -54,7 +54,7 @@ ExportExcel.Index = function () {
                 refresh: true,
                 pageSizes: true
             },
-            export: {
+            "export": {
                 cssClass: "k-grid-export-image",
                 title: "people",
                 createUrl: "/Home/ExportToExcel",
