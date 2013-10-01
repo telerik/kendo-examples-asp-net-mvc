@@ -11,7 +11,7 @@
         <ul id="innerList">
             <li>
                 @Html.LabelFor(m => m.ComboBox)
-                @Html.Kendo().ComboBoxFor(m => m.ComboBox)
+                @Html.Kendo().ComboBoxFor(m => m.ComboBox).BindTo(new SelectList(new string[] { "Item1", "Item2", "Item3" }))
                 @Html.ValidationMessageFor(m => m.ComboBox)
             </li>
 

@@ -13,29 +13,12 @@ body
     color: #696969;
 }
 
-a:link
+header,
+footer,
+nav,
+section 
 {
-    color: #034af3;
-    text-decoration: underline;
-}
-a:visited
-{
-    color: #505abc;
-}
-a:hover
-{
-    color: #1d60ff;
-    text-decoration: none;
-}
-a:active
-{
-    color: #12eb87;
-}
-
-p, ul
-{
-    margin-bottom: 20px;
-    line-height: 1.6em;
+    display: block;
 }
 
 /* HEADINGS   
@@ -69,6 +52,16 @@ h5, h6
     font-size: 1em;
 }
 
+a
+{
+    color: #696969;
+}
+
+li
+{
+    line-height: 1.6;
+}
+
 /* this rule styles <h2> tags that are the 
 first child of the left and right table columns */
 .rightColumn > h1, .rightColumn > h2, .leftColumn > h1, .leftColumn > h2
@@ -88,7 +81,7 @@ page width. Or, you can specify an exact pixel width. */
     margin-right: auto;
 }
 
-#header
+header, #header
 {
     position: relative;
     margin-bottom: 0px;
@@ -96,7 +89,7 @@ page width. Or, you can specify an exact pixel width. */
     padding: 0;
 }
 
-#header h1
+header h1, #header h1
 {
     font-weight: bold;
     padding: 5px 0;
@@ -109,13 +102,13 @@ page width. Or, you can specify an exact pixel width. */
 
 #main
 {
+    background: #fff;
     padding: 30px 30px 15px 30px;
-    background-color: #fff;
     margin-bottom: 30px;
     _height: 1px; /* only IE6 applies CSS properties starting with an underscore */
 }
 
-#footer
+footer, #footer
 {
     color: #999;
     padding: 10px 0;
@@ -125,58 +118,26 @@ page width. Or, you can specify an exact pixel width. */
     font-size: .9em;
 }
 
-/* TAB MENU   
+/* MENU   
 ----------------------------------------------------------*/
-ul#menu
+#menu
 {
-    border-bottom: 1px #5C87B2 solid;
-    padding: 0 0 2px;
     position: relative;
     margin: 0;
     text-align: right;
 }
 
-ul#menu li
+#menu .t-item
 {
-    display: inline;
-    list-style: none;
+    border-width: 0 0 0 1px;
 }
 
-ul#menu li#greeting
+#menu .t-link
 {
-    padding: 10px 20px;
+    padding: 5px 20px;
     font-weight: bold;
     text-decoration: none;
-    line-height: 2.8em;
-    color: #fff;
-}
-
-ul#menu li a
-{
-    padding: 10px 20px;
-    font-weight: bold;
-    text-decoration: none;
-    line-height: 2.8em;
-    background-color: #e8eef4;
-    color: #034af3;
-}
-
-ul#menu li a:hover
-{
-    background-color: #fff;
-    text-decoration: none;
-}
-
-ul#menu li a:active
-{
-    background-color: #a6e2a6;
-    text-decoration: none;
-}
-
-ul#menu li.selected a
-{
-    background-color: #fff;
-    color: #000;
+    line-height: 1.8em;
 }
 
 /* FORM LAYOUT ELEMENTS   
@@ -247,15 +208,9 @@ table th
     color:Red;
 }
 
-#menucontainer
-{
-    margin-top:40px;
-}
-
 div#title
 {
     display:block;
-    float:left;
     text-align:left;
 }
 
@@ -342,4 +297,26 @@ div#title
 .tri-state
 {
     width: 6em;
+}
+
+
+ul#menu {
+    border-bottom: 1px #5C87B2 solid;
+    padding: 0 0 2px;
+    position: relative;
+    margin: 0;
+    text-align: right;
+}
+
+ul#menu li {
+    display: inline;
+    list-style: none;
+}
+ul#menu li a {
+    padding: 10px 20px;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 2.8em;
+    background-color: #e8eef4;
+    color: #034af3;
 }
