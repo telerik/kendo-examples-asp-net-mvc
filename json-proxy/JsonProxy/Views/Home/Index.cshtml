@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<input type="search" id="search" value="kendo">
+<div id="grid"></div>
+
+@section scripts {
+    <script>
+        var dataSource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    url: "@Url.Action("Proxy", "Home")",
+                    dataType: "json",
+                    data: {
+                        url: "https://api.github.com/search/repositories",
+                        q: function () {
+                            return $("#search").val() + "+language:javascript";
+                        }
+                    },
+                }
+            },
+            pageSize: 10,
+            schema: {
+                data: "items",
+                total: function (response) {
+                    return Math.min(response['total_count'], 30);
+                }
+            },
+            error: function (e) {
+                if (e.errorThrown == "Forbidden") {
+                    alert(JSON.parse(e.xhr.responseText).message);
+                }
+            }
+        });
+
+        $("#search").change(function () {
+            if (this.value.length < 4) {
+                alert("Enter at least 4 characters");
+                return;
+            }
+
+            dataSource.read();
+        });
+
+        $("#grid").kendoGrid({
+            dataSource: dataSource,
+            height: 400,
+            pageable: true,
+            columns: [
+                {
+                    field: "name",
+                    title: "Name",
+                    template: '<a href="#= html_url #">#: name #</a>'
+                },
+                {
+                    field: "description",
+                    title: "Description"
+                }
+            ]
+        });
+    </script>
+}
