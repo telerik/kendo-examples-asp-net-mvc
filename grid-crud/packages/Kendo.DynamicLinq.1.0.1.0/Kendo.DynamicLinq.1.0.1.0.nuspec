@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Kendo.DynamicLinq</id>
+    <version>1.0.1.0</version>
+    <title>Kendo.DynamicLinq</title>
+    <authors>Atanas Korchev</authors>
+    <owners>Atanas Korchev</owners>
+    <projectUrl>https://github.com/kendo-labs/dlinq-helpers</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Server side paging, sorting and filtering via Dynamic Linq</description>
+    <copyright>Copyright 2013</copyright>
+    <dependencies>
+      <dependency id="System.Linq.Dynamic" version="1.0.0" />
+    </dependencies>
+  </metadata>
+</package>

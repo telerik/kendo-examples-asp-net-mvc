@@ -3,6 +3,7 @@ using System.Data;
 using System.Linq;
 using System.Web.Mvc;
 using Kendo.Mvc.Grid.CRUD.Models;
+using Kendo.DynamicLinq;
 
 namespace Kendo.Mvc.Grid.CRUD.Controllers
 {
@@ -66,7 +67,7 @@ namespace Kendo.Mvc.Grid.CRUD.Controllers
         /// </summary>
         /// <returns>All available products as JSON</returns>
         [HttpPost]
-        public ActionResult Read(int take, int skip, IEnumerable<Sort> sort, Kendo.Mvc.Grid.CRUD.Models.Filter filter)
+        public ActionResult Read(int take, int skip, IEnumerable<Sort> sort, Kendo.DynamicLinq.Filter filter)
         {
             using (var northwind = new Northwind())
             {
