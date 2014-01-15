@@ -464,7 +464,7 @@ namespace KendoGridExportExcelMvc.Utilities
             }
             // Get the column
             column = columns.Elements<DocumentFormat.OpenXml.Spreadsheet.Column>().Where(item => item.Min == columnIndex).FirstOrDefault();
-            if (columns == null)
+            if (column == null)
             {
                 return false;
             }
