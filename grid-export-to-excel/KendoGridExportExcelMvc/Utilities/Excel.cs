@@ -285,7 +285,7 @@ namespace KendoGridExportExcelMvc.Utilities
                 if (sharedString.InnerText == stringItem)
                 {
                     found = true;
-                    break; ;
+                    break;
                 }
                 index++;
             }
