@@ -6,7 +6,6 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
-using FluentJson;
 using UploadS3.Models;
 
 namespace UploadS3.Controllers
@@ -21,13 +20,13 @@ namespace UploadS3.Controllers
                 ExpirationTime = TimeSpan.FromHours(1),
 
                 // Authentication
-                AccessKey = "<YOUR_ACCESS_KEY>",
-                SecretAccessKey = "<YOUR_SECRET_KEY>",
+                AccessKey = "YOUR_ACCESS_KEY",
+                SecretAccessKey = "YOUR_SECRET_KEY",
 
                 // Bucket name and key prefix (folder)
-                Bucket = "<BUCKET_NAME>",
-                BucketUrl = "http://<BUCKET_NAME>.s3.amazonaws.com/",
-                KeyPrefix = "<ROOT_FOLDER>/",
+                Bucket = "YOUR_BUCKET",
+                BucketUrl = "http://YOUR_BUCKET.s3.amazonaws.com/",
+                KeyPrefix = "YOUR_UPLOAD_ROOT/",
 
                 // See http://docs.aws.amazon.com/AmazonS3/latest/dev/ACLOverview.html#CannedACL
                 Acl = "public-read",
