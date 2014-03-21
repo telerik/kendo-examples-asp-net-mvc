@@ -2,7 +2,7 @@
 
 This is a sample web site which shows how to use the Kendo UI Upload to store files directly in Amazon S3 buckets.
 
-> Requires Kendo UI Version 2014.1.321 (internal build) and newer.
+Requires Kendo UI Version 2014.1.321 (internal build) and newer.
 
 > See [Browser-Based Uploads Using POST](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingHTTPPOST.html) from the AWS documentation.
 
