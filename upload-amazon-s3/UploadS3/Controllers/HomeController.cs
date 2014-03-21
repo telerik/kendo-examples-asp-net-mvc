@@ -29,7 +29,7 @@ namespace UploadS3.Controllers
                 KeyPrefix = "YOUR_UPLOAD_ROOT/",
 
                 // See http://docs.aws.amazon.com/AmazonS3/latest/dev/ACLOverview.html#CannedACL
-                Acl = "public-read",
+                Acl = "private",
 
                 // Mime type prefix
                 ContentTypePrefix = "image/",
