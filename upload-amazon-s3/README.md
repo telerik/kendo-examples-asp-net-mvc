@@ -137,6 +137,8 @@ The client-side code appends all required fields before submitting the request t
         };
     }
 
+> Important: Existing files will be overwritten. It's highly recommended to make file names unique.
+
 All fields except "Content-Type" are taken directly from the configuration.
 The content type is inferred from the extension.
 
