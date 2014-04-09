@@ -1,0 +1,10 @@
+Demonstrates how to export a Chart to an PNG image or a PDF file using Inkscape.
+
+Requires Inkscape to operate. Free download available at:
+http://inkscape.org/download/?lang=en
+
+Inkscape tutorial with full list of export options is available at:
+http://tavmjong.free.fr/INKSCAPE/MANUAL/html/CommandLine-Export.html
+
+Note that ASP.NET MVC and Inkscape are chosen just as an example.
+The same approach can be used for different server platforms and SVG processing software.
