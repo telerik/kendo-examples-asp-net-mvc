@@ -26,6 +26,12 @@
             </li>
 
             <li>
+                @Html.LabelFor(m => m.MultiSelect)
+                @Html.Kendo().MultiSelectFor(m => m.MultiSelect).BindTo(new SelectList(new string[] { "Item1", "Item2", "Item3" })).HtmlAttributes(new { style = "width:500px" })
+                @Html.ValidationMessageFor(m => m.MultiSelect)
+            </li>
+
+            <li>
                 @Html.LabelFor(m => m.DatePicker)
                 @Html.Kendo().DatePickerFor(m => m.DatePicker)
                 @Html.ValidationMessageFor(m => m.DatePicker)
@@ -47,7 +53,7 @@
 <script>
     $(document).ready(function () {
         /* Bind Mutation Events */
-        var elements = $("#tickets").find("[data-role=combobox],[data-role=dropdownlist],[data-role=numerictextbox],[data-role^=date]");
+        var elements = $("#tickets").find("[data-role=combobox],[data-role=dropdownlist],[data-role=numerictextbox],[data-role^=date],[data-role=multiselect]");
 
         //correct mutation event detection
         var hasMutationEvents = ("MutationEvent" in window),
@@ -84,6 +90,7 @@
         var element = $(e.target);
 
         element.siblings("span.k-dropdown-wrap")
+               .add(element.siblings("div.k-multiselect-wrap"))
                .add(element.parent("span.k-numeric-wrap"))
                .add(element.parent("span.k-picker-wrap"))
                .toggleClass("k-invalid", element.hasClass("input-validation-error"));
@@ -92,13 +99,19 @@
 
 <style type="text/css">
     .k-widget > span.k-invalid,
+    .k-widget >div.k-invalid,
     input.k-invalid
     {
-        background: red;
+        background-color: red; /*Style invalid widgets*/
+    }
+
+    .k-multiselect {
+        display:inline-block;
     }
     
-    #innerList li
+    #innerList > li
     {
         margin: 10px 10px;
+        list-style: none;
     }
 </style>

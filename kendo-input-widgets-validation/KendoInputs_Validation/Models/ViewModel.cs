@@ -16,5 +16,8 @@ namespace KendoInputs_Validation.Models
 
         [Required]
         public DateTime DatePicker { get; set; }
+
+        [Required]
+        public string[] MultiSelect { get; set; }
     }
 }
