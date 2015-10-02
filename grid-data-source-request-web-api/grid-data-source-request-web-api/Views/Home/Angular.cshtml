@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div ng-app="app" ng-controller="controller">
+    <div kendo-grid k-options="gridOptions" k-data-source="gridDataSource"></div>
+</div>
+<script>
+    var app = angular.module("app", ["kendo.directives"]);
+    app.controller("controller", ["$http", "$scope", function ($http, $scope) {
+        $scope.gridOptions = {
+            columns: [
+                { "title": "Order ID", "width": "100px", "field": "OrderID" },
+                { "title": "Ship City", "width": "200px", "field": "ShipCity" },
+                { "title": "Ship Address", "field": "ShipAddress" }
+            ],
+            groupable: true,
+            pageable: true,
+            sortable: true
+        };
+
+        $scope.gridDataSource = {
+            transport: {
+                read: function (options) {
+                    var webapi = new kendo.data.transports.webapi({ prefix: "" });
+                    var params = webapi.parameterMap(options.data);
+
+                    $http.get("/api/orders", { params: params })
+                        .success(function (data) {
+                            options.success(data);
+                        })
+                        .error(function (data) {
+                            options.error();
+                        });
+                }
+            },
+            pageSize: 10,
+            serverPaging: true,
+            serverSorting: true,
+            serverFiltering: true,
+            serverGrouping: true,
+            serverAggregates: true,
+            schema: $.extend({}, kendo.data.schemas.webapi, { data: "Data", total: "Total", errors: "Errors" })
+        };
+    }]);
+</script>

@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Kendo UI Grid bound to WebApi controller";
+}
+
+<div id="grid"></div>
+<script>
+    $("#grid").kendoGrid({
+        columns: [
+              { "title": "Order ID", "width": "100px", "field": "OrderID" },
+              { "title": "Ship City", "width": "200px", "field": "ShipCity" },
+              { "title": "Ship Address", "field": "ShipAddress" }
+        ],
+        groupable: true,
+        pageable: true,
+        sortable: true,
+        dataSource: {
+            type: "webapi",
+            transport: {
+                read: {
+                    url: "/api/orders"
+                }
+            },
+            pageSize: 10,
+            serverPaging: true,
+            serverSorting: true,
+            serverFiltering: true,
+            serverGrouping: true,
+            serverAggregates: true,
+            schema: { 
+                data: "Data", 
+                total: "Total", 
+                errors: "Errors"
+            }
+        }
+    });
+</script>

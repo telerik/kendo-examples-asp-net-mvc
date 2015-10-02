@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>@ViewBag.Title - My Telerik MVC Application</title>
+        <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    	<link href="http://cdn.kendostatic.com/2015.2.805/styles/kendo.common.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://cdn.kendostatic.com/2015.2.805/styles/kendo.default.min.css" rel="stylesheet" type="text/css" />
+        <script src="http://cdn.kendostatic.com/2015.2.805/js/jquery.min.js"></script>
+        <script src="http://cdn.kendostatic.com/2015.2.805/js/angular.min.js"></script>
+        <script src="http://cdn.kendostatic.com/2015.2.805/js/jszip.min.js"></script>
+        <script src="http://cdn.kendostatic.com/2015.2.805/js/kendo.all.min.js"></script>
+        <script src="http://cdn.kendostatic.com/2015.2.805/js/kendo.aspnetmvc.min.js"></script>
+</head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                </div>
+                <div class="float-right">
+                    <nav>
+                        <ul id="menu">
+                            <li>@Html.ActionLink("jQuery", "Index", "Home")</li>
+                            <li>@Html.ActionLink("AngularJS", "Angular", "Home")</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - My Telerik MVC Application</p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
