@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<script type="text/kendo" id="territoriesTemplate">
+    <ul>
+        # for(var i = 0; i< Territories.length; i++){ #
+            <li>#: Territories[i].TerritoryDescription #</li>
+        # } #
+    </ul>
+</script>
+
+<div id="grid"></div>
+<script>
+    function territoriesEditor(container, options) {
+        $('<input name="Territories">').appendTo(container)
+            .kendoMultiSelect({
+                dataValueField: "TerritoryID",
+                dataTextField: "TerritoryDescription",
+                dataSource: @Html.Raw(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(ViewData["territories"]))
+            });
+    }
+
+    $("#grid").kendoGrid({
+        pageable: true,
+        dataSource: {
+            pageSize: 3,
+            transport: {
+                read: {
+                    url: "@Url.Action("Read", "Home")",
+                    type: "POST"
+                },
+                update: {
+                    url: "@Url.Action("Update", "Home")",
+                    contentType: "application/json",
+                    type: "POST"
+                },
+                parameterMap: function(options) {
+                    return kendo.stringify(options);
+                }
+            },
+            schema: {
+                model: {
+                    id: "EmployeeID",
+                    fields: {
+                        HireDate: { type: "date" }
+                    }
+                }
+            }
+        },
+        editable: "inline",
+        columns: [
+            "FirstName",
+            "LastName",
+            "Title",
+            { editor: territoriesEditor, field: "Territories", template: $("#territoriesTemplate").html() },
+            { command: "edit" }
+        ]
+    });
+</script>

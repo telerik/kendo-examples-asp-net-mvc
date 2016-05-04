@@ -1,0 +1,131 @@
+﻿<!-- Load custom view code -->
+<link href="@Url.Content("~/Content/toDoViewStyles.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/toDoView.js")"></script>
+
+<div class="k-widget k-scheduler" id="scheduler"></div>
+
+<script>
+    $(function () {
+        $("#scheduler").kendoScheduler({
+            date: new Date(2013, 5, 8, 0, 0, 0, 0),
+            startTime: new Date(2013, 5, 13, 7, 0, 0, 0),
+            height: 600,
+            timezone: "Etc/UTC",
+            resources: [
+                {
+                    title: "Room",
+                    field: "RoomID",
+                    dataTextField: "Text",
+                    dataValueField: "Value",
+                    dataColorField: "Color",
+                    dataSource: [
+                        { Text: "Meeting Room 101", Value: 1, Color: "#6eb3fa" },
+                        { Text: "Meeting Room 201", Value: 2, Color: "#f58a8a" }
+                    ]
+                }, {
+                    title: "Attendees",
+                    field: "Attendees",
+                    multiple: true,
+                    dataTextField: "Text",
+                    dataValueField: "Value",
+                    dataColorField: "Color",
+                    dataSource: [
+                        { Text: "Alex", Value: 1, Color: "#f8a398" },
+                        { Text: "Bob", Value: 2, Color: "#51a0ed" },
+                        { Text: "Charlie", Value: 3, Color: "#56ca85" }
+                    ]
+                }
+            ],
+            views: [
+                "day",
+                "month",
+                "agenda",
+                "week",
+                { type: "kendo.ui.ToDoView", title: "To Do", selected: true },
+            ],
+            dataSource: {
+                transport: {
+                    read: {
+                        url: "@Url.Action("Meetings_Read", "Home")",
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        type: "POST"
+                    },
+                    update: {
+                        url: "@Url.Action("Meetings_Update", "Home")",
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        type: "POST"
+                    },
+                    create: {
+                        url: "@Url.Action("Meetings_Create", "Home")",
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        type: "POST"
+                    },
+                    destroy: {
+                        url: "@Url.Action("Meetings_Destroy", "Home")",
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        type: "POST"
+                    },
+                    parameterMap: function (options, operation) {
+                        if (operation === "read") {
+                            var scheduler = $("#scheduler").data("kendoScheduler");
+                            var result = {
+                                start: scheduler.view().startDate(),
+                                end: scheduler.view().endDate()
+                            }
+                            return kendo.stringify(result);
+                        }
+                        return kendo.stringify(options);
+                    }
+                },
+                error: error_handler,
+                schema: {
+                    model: {
+                        id: "MeetingID",
+                        fields: {
+                            MeetingID: { type: "number" },
+                            title: { from: "Title", type: "string", defaultValue: "No title", validation: { required: true } },
+                            description: { from: "Description", type: "string" },
+                            start: { from: "Start", type: "date" },
+                            startTimezone: { from: "StartTimezone", type: "string" },
+                            end: { from: "End", type: "date" },
+                            endTimezone: { from: "EndTimezone", type: "string" },
+                            recurrenceRule: { from: "RecurrenceRule", type: "string" },
+                            recurrenceId: { from: "RecurrenceID", type: "number", defaultValue: null },
+                            recurrenceException: { from: "RecurrenceException", type: "string" },
+                            isAllDay: { from: "IsAllDay", type: "boolean" },
+                            Timezone: { type: "string" },
+                            RoomID: { type: "number", defaultValue: null },
+                            Attendees: { type: "object" }
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    function error_handler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+
+            var scheduler = $("#scheduler").data("kendoScheduler");
+            scheduler.one("dataBinding", function (e) {
+                //prevent saving if server error is thrown
+                e.preventDefault();
+            })
+        }
+    }
+</script>

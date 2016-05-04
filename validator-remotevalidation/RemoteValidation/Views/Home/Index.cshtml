@@ -1,0 +1,76 @@
+﻿<form id="myform">
+    Valid values 123 and 132<input class="k-textbox" type="text" name="userId" data-userid /> <br /><br /> 
+    Valid between 100 and 1000<input class="k-textbox" type="text" name="price" data-price /> <br /><br /> 
+    Valid between 0 and 10 <input class="k-textbox" type="text" name="qty" data-qty /> <br /> 
+    <button>Validate</button>
+</form>
+
+<script>
+    var validation = {
+        userId: {
+            valid: false,
+            value: ""
+        },
+        qty: {
+            valid: false,
+            value: ""
+        },
+        price: {
+            valid: false,
+            value: ""
+        }
+    };
+
+    $("#myform").kendoValidator({
+        validateOnBlur: true,
+        messages: {
+            userId: "userid validation failed",
+            price: "price validation failed",
+            qty: "quantity validation failed"
+        },
+        rules: {
+            price: function (input) {
+                return inputRule(input, "price");
+            },
+            userId: function (input) {
+                return inputRule(input, "userId");
+            },
+            qty: function (input) {
+                return inputRule(input, "qty");
+            }
+        }
+    });
+
+    function inputRule(input, name) {
+        if (!input.is("[name="+ name + "]")) {
+            return true;
+        } else {
+            var state = validation[input.attr("name")];
+            if (state.value == input.val() && state.valid) {
+                return true
+            } else {
+                customValidator(input)
+                return false;
+            };
+        }
+    }
+
+    function customValidator(input) {
+        $.ajax({
+            url: "Home/Validate",
+            data: {
+                field: input.attr("name"),
+                value: input.val()
+            },
+            success: function (data) {
+                validation[input.attr("name")].valid = true;
+                validation[input.attr("name")].value = input.val();
+                $("#myform").getKendoValidator().validateInput(input);
+            },
+            error: function () {
+                validation[input.attr("name")].valid = false;
+                validation[input.attr("name")].value = input.val();
+            }
+        })
+    }
+</script>
