@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+
+<h3>Telerik UI for ASP.NET MVC TabStrip</h3>
+<br />
+
+    <div id="contacts-tabstrip">
+    <ul>
+        <li class="k-state-active">
+            Phone
+        </li>
+        <li>
+            Email
+        </li>
+        <li>
+            Address
+        </li>
+    </ul>
+    <div>
+        <p>
+            <span class="label">Main:</span>
+            <span>425.555.0100</span>
+        </p>
+        <p>
+            <span class="label">After Hours:</span>
+            <span>425.555.0199</span>
+        </p>
+    </div>
+    <div>
+        <p>
+            <span class="label">Support:</span>
+            <span><a href="mailto:Support@example.com">Support@example.com</a></span>
+        </p>
+        <p>
+            <span class="label">Marketing:</span>
+            <span><a href="mailto:Marketing@example.com">Marketing@example.com</a></span>
+        </p>
+        <p>
+            <span class="label">General:</span>
+            <span><a href="mailto:General@example.com">General@example.com</a></span>
+        </p>
+    </div>
+    <div>
+        <p>
+            One Microsoft Way<br />
+            Redmond, WA 98052-6399
+        </p>
+    </div>
+</div>
+<script>
+    $(function () {
+        $("#contacts-tabstrip").kendoTabStrip();
+    });
+</script>

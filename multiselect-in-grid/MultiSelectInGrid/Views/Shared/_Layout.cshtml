@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>@ViewBag.Title</title>
+	  <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2016.1.412/styles/kendo.common.min.css">
+      <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2016.1.412/styles/kendo.rtl.min.css">
+      <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2016.1.412/styles/kendo.default.min.css">
+  <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2016.1.412/styles/kendo.mobile.all.min.css">
+
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="http://kendo.cdn.telerik.com/2016.1.412/js/angular.min.js"></script>
+  <script src="http://kendo.cdn.telerik.com/2016.1.412/js/jszip.min.js"></script>
+  <script src="http://kendo.cdn.telerik.com/2016.1.412/js/kendo.all.min.js"></script>
+</head>
+
+<body>
+	<div class="page">
+		<header>
+			<div id="title">
+				<h1>My Kendo UI for MVC Application</h1>
+			</div>
+
+			@(Html.Kendo().Menu()
+					.Name("menu")
+					.Items(menu => {
+						menu.Add().Text("Home").Action("Index", "Home");
+						menu.Add().Text("About").Action("About", "Home");
+					}))
+		</header>
+		<section id="main">
+			@RenderBody()
+		</section>
+		<footer>
+		</footer>
+	</div>
+</body>
+</html>

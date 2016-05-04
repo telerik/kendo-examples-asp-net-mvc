@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+
+<article>
+    <p>
+        Use this area to provide additional information.
+    </p>
+
+    <p>
+        Use this area to provide additional information.
+    </p>
+
+    <p>
+        Use this area to provide additional information.
+    </p>
+</article>
+
+<aside>
+    <h3>Telerik UI for ASP.NET MVC TreeView</h3>
+    <p>
+        Use this area to provide additional information.
+    </p>
+    <ul id="links-treeview">
+        <li>
+            <div>
+                <a class="k-link k-in" href="/razor/Home">Home</a>
+            </div>
+        </li>
+        <li>
+            <div>
+                <a class="k-link k-in" href="/razor/Home/About">About</a>
+            </div>
+        </li>
+        <li>
+            <div>
+                <a class="k-link k-in" href="/razor/Home/Contact">Contact</a>
+            </div>
+        </li>
+</ul>
+</aside>
+
+<script>
+    $(function () {
+        $("#links-treeview").kendoTreeView();
+    });
+</script>

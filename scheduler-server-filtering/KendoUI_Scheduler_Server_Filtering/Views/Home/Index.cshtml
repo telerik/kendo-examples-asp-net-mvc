@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div id="scheduler"></div>
+
+<script>
+    $(function () {
+        $("#scheduler").kendoScheduler({
+            startTime: new Date("2013/6/13 7:00"),
+            date: new Date("2013/6/13"),
+            height: 600,
+            timezone: "Etc/UTC",
+            views: [
+                "day",
+                { type: "week", selected: true },
+                "month",
+                "agenda"
+            ],
+            dataSource: {                
+                transport: {
+                    read: {
+                        url: "@Url.Action("Read", "Home")",
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        type: "POST"                      
+                    },
+                    update: {
+                        url: "@Url.Action("Update", "Home")",
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        type: "POST"
+                    },
+                    create: {
+                        url: "@Url.Action("Create", "Home")",
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        type: "POST"
+                    },
+                    destroy: {
+                        url: "@Url.Action("Destroy", "Home")",
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        type: "POST"
+                    },
+                    parameterMap: function (options, operation) {                        
+                        
+                        if (operation === "read") {
+                            var scheduler = $("#scheduler").data("kendoScheduler");
+
+                            var result = {
+                                start: scheduler.view().startDate(),
+                                end: scheduler.view().endDate()
+                            }
+
+                            return kendo.stringify(result);
+                        }
+
+                        return kendo.stringify(options);
+                    }
+                },
+                serverFiltering: true,
+                schema: {
+                    model: {
+                        id: "taskID",
+                        fields: {
+                            taskID: { from: "TaskID", type: "number" },
+                            title: { from: "Title", defaultValue: "No title", validation: { required: true } },
+                            start: { type: "date", from: "Start" },
+                            end: { type: "date", from: "End" },
+                            startTimezone: { from: "StartTimezone" },
+                            endTimezone: { from: "EndTimezone" },
+                            description: { from: "Description" },
+                            recurrenceId: { from: "RecurrenceID" },
+                            recurrenceRule: { from: "RecurrenceRule" },
+                            recurrenceException: { from: "RecurrenceException" },
+                            ownerId: { from: "OwnerID", defaultValue: 1 },
+                            isAllDay: { type: "boolean", from: "IsAllDay" }
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
