@@ -62,11 +62,6 @@ namespace GridExcelSpreadProcessing.Controllers
                 Session[title] = output.ToArray();
             }
 
-            using (MemoryStream output = new MemoryStream())
-            {
-                formatProvider.Export(workbook, output);
-                Session[title] = output.ToArray();
-            }
             return Json(new { success = true }, JsonRequestBehavior.AllowGet);
         }
 
