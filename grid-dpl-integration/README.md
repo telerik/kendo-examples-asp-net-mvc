@@ -1,5 +1,9 @@
 # Grid for ASP.NET MVC and Document Processing Library Integration
 
+## IMPORTANT
+This example will no longer be updated. Please check for a newer version here:
+[Grid for ASP.NET MVC and Document Processing Library Integration](https://github.com/telerik/ui-for-aspnet-mvc-examples/tree/master/grid/grid-dpl-integration)
+
 ## Overview
 The examples hosted in this folder demonstrate a possible way to export Grid to Excel (XLSX) and CSV formats.
 
